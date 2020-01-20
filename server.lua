@@ -2,20 +2,15 @@ local Webhook = 'https://discordapp.com/api/webhooks/668495433605316639/3StSLNZR
 
 local SystemName = 'Boot Coords'
 
-AddEventHandler('chatMessage', function(source, name, msg)
-	if msg == "/gc" then
-		local source = source
-        TriggerClientEvent('tm1_getcoords', source)
-        
-	end
-end)
+RegisterCommand("gc", function(source, args, rawCommand)
+    local source = source
+    TriggerClientEvent('tm1_getcoords', source)
+end, true)
 
-AddEventHandler('chatMessage', function(source, name, msg)
-	if msg == "/gc1" then
-		local source = source
-		TriggerClientEvent('tm1_getcoords1', source)
-	end
-end)
+RegisterCommand("gc1", function(source, args, rawCommand)
+    local source = source
+	TriggerClientEvent('tm1_getcoords1', source)
+end, true)
 
 RegisterServerEvent('tm1_getcoords:print')
 AddEventHandler('tm1_getcoords:print', function(msg)
